@@ -1,0 +1,54 @@
+<?php
+    date_default_timezone_set('Europe/Copenhagen)');
+    include 'db.link.php';
+    include 'comments.link.php';
+    session_start();
+    
+?>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>COMMENT SECTION</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    
+</head>
+<body>
+    <div class="container">
+       
+        <img class="logo" href="index.html" src="chaselogo.png"  alt="logo">
+        <div class="item presentation">MAKING FASHION ACCESIBLE TO ANYONE</div>
+        <div class="item nav">
+            	 <ul id="navigation">
+                    <li><a href="index.html" >HOME</a></li>
+                </ul>
+         </div>
+        
+
+     
+
+    
+<br><br>
+
+<?php   
+       echo "<form method='POST' action='".setComments($conn)."'>
+  <input type='hidden' name='uid' value='  '>
+  <input type='hidden' name='date' value='".date('Y-m-d H:i:s')."'>
+  <textarea name='message'></textarea><br>
+  <button type='submit' name='commentSubmit'>Comment</button>
+ 
+</form>"; 
+    
+getComments($conn);
+?>
+<?php
+    
+echo "<form method='POST' action='http://fernandogestomoreno.dk/chase/logout.php'>
+  <button type='submit' name='logoutSubmit'>Log Out</button>
+</form>"; 
+?>
+
+    
+
+</body>
+</html>
